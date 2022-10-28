@@ -12,15 +12,11 @@ const unsigned int SCR_HEIGHT = 600;
 
 int main()
 {
-    // Moj prvi komentar!
-    // Drugi komentar!
-    // Treci komentar!
-    // Cetvrti komentar!
-    // Peti komentar!
+  
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // zapamti ovaj komentar!
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
@@ -47,7 +43,7 @@ int main()
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }    
-
+    // glfwSetKeyCallback(window, callback) -poziva se kada je pretisnuto neko dugme
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
