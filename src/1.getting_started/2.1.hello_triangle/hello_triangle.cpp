@@ -118,10 +118,16 @@ int main()
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW); //u bafer saljemo podatke
+    
+   // da kazemo sta znace podaci koje smo poslali 
+   //0 - indeks unutar samog vrteksa da kaze na kojoj pocinje nas odredjeni atrinut
+   //3 i GL_FLOAT - atribut je duzine 3 (3 podatka) i oni su tipa float
+   // da li zeimo normalizaciju
+   // ukupna velicina
+   // offset unutar vrteksa gde pocinu ove pozicije
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(0); // aktiviramo atribut
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
     glBindBuffer(GL_ARRAY_BUFFER, 0); 
