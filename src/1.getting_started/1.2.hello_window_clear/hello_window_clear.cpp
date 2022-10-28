@@ -52,9 +52,9 @@ int main()
         processInput(window);
 
         // render
-        // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        // ------    crv   zel   plav
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // bafer cisti na boju koja nam je zadata, smao je postavili
+        glClear(GL_COLOR_BUFFER_BIT);  // f-ja koja cisti bafer
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
