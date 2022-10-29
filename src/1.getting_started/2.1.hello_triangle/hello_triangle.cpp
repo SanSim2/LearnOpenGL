@@ -12,9 +12,10 @@ const unsigned int SCR_HEIGHT = 600;
 
 const char *vertexShaderSource = R"s(
 #version 330 core
+// layout nasih ulaznih podataka
 layout (location = 0) in vec3 aPos;
 void main()
-{
+{ // odavde pocinje nase izvrsavanje
    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
 }
 
@@ -22,7 +23,7 @@ void main()
 
 const char *fragmentShaderSource = R"s(
 #version 330 core
-out vec4 FragColor;
+out vec4 FragColor; // definisemo izlaznu promenljivu
 void main()
 {
    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
@@ -66,16 +67,16 @@ int main()
     // build and compile our shader program
     // ------------------------------------
     // vertex shader
-    int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
+    int vertexShader = glCreateShader(GL_VERTEX_SHADER); //kreiramo shader
+    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL); //moramo da kazemo gde je source kod, 1- jedan string ima u kodu za shader
+    glCompileShader(vertexShader); 
     // check for shader compile errors
     int success;
     char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success); // proverava da li se izvrsila dobro kompilacija shader-a
     if (!success)
     {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);  //ako zelimo da znamo koja tacno se greska desila
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
     // fragment shader
@@ -89,17 +90,18 @@ int main()
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
-    // link shaders
+    // link shaders u jedan program
     int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
     // check for linking errors
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success); //proveravamo da li je doslo do neke greske pri linkovanju
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
     }
+   // shader-e kada linkujemo vise nam ne trebaju pa mozemo da ih obrisemo da ne zauzimaju prostor
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
@@ -156,7 +158,7 @@ int main()
         // draw our first triangle
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 3);//1 arg - sta crtamo; 2arg - gde je offset unutar buffer-a od kog pocinje, 3arg - kolika je duzina jednog 
         // glBindVertexArray(0); // no need to unbind it every time 
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
