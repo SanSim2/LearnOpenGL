@@ -108,14 +108,14 @@ int main()
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
-         0.5f,  0.5f, 0.0f, 0.4f, 0.4f,   // top right
-         0.5f, -0.5f, 0.0f, 0.2f, 0.2f,  // bottom right
-        -0.5f, -0.5f, 0.0f, -0.2f, -0.2f, // bottom left
-        -0.5f,  0.5f, 0.0f,  0.2f, 0.2f, // top left
+            0.5f,  0.5f, 0.0f, 0.4f, 0.4f,   // top right
+            0.5f, -0.5f, 0.0f, 0.2f, 0.2f,  // bottom right
+            -0.5f, -0.5f, 0.0f, -0.2f, -0.2f, // bottom left
+            -0.5f,  0.5f, 0.0f,  0.2f, 0.2f, // top left
     };
     unsigned int indices[] = {  // note that we start from 0!
-        0, 1, 3,  // first Triangle
-        1, 2, 3   // second Triangle
+            0, 1, 3,  // first Triangle
+            1, 2, 3   // second Triangle
     };
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
@@ -136,14 +136,14 @@ int main()
     glEnableVertexAttribArray(1);
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
     //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-    glBindVertexArray(0); 
+    glBindVertexArray(0);
 
 
     // uncomment this call to draw in wireframe polygons.
@@ -168,7 +168,7 @@ int main()
         //glDrawArrays(GL_TRIANGLES, 0, 6);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         // glBindVertexArray(0); // no need to unbind it every time 
- 
+
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);

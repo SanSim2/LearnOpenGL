@@ -41,7 +41,7 @@ int main()
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
-    }    
+    }
 
     // render loop
     // -----------
@@ -53,7 +53,7 @@ int main()
 
         // render
         // ------    crv   zel   plav
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // bafer cisti na boju koja nam je zadata, smao je postavili
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // bafer cisti na boju koja nam je zadata, smo je postavili
         glClear(GL_COLOR_BUFFER_BIT);  // f-ja koja cisti bafer
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -80,7 +80,7 @@ void processInput(GLFWwindow *window)
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // make sure the viewport matches the new window dimensions; note that width and 
+    // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }

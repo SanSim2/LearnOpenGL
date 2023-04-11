@@ -12,19 +12,19 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 const char *vertexShaderSource ="#version 330 core\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = vec4(aPos, 1.0);\n"
-    "}\0";
+                                "layout (location = 0) in vec3 aPos;\n"
+                                "void main()\n"
+                                "{\n"
+                                "   gl_Position = vec4(aPos, 1.0);\n"
+                                "}\0";
 
 const char *fragmentShaderSource = "#version 330 core\n"
-    "out vec4 FragColor;\n"
-    "uniform vec4 ourColor;\n"
-    "void main()\n"
-    "{\n"
-    "   FragColor = ourColor;\n"
-    "}\n\0";
+                                   "out vec4 FragColor;\n"
+                                   "uniform vec4 ourColor;\n"
+                                   "void main()\n"
+                                   "{\n"
+                                   "   FragColor = ourColor;\n"
+                                   "}\n\0";
 
 int main()
 {
@@ -102,9 +102,9 @@ int main()
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-         0.0f,  0.5f, 0.0f   // top 
+            0.5f, -0.5f, 0.0f,  // bottom right
+            -0.5f, -0.5f, 0.0f,  // bottom left
+            0.0f,  0.5f, 0.0f   // top
     };
 
     unsigned int VBO, VAO;
@@ -148,8 +148,10 @@ int main()
         // update shader uniform
         float timeValue = glfwGetTime();
         float greenValue = sin(timeValue) / 2.0f + 0.5f;
-        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor"); // trazimo adresu uniformne promenljive
+        // saljemo u kom se proramu nalazi i kako se zove
+        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f); //promenljiva je od 4 float pa je 4f
+        // postavili smo vrednost promenljive koju smo nasli
 
         // render the triangle
         glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -184,7 +186,7 @@ void processInput(GLFWwindow *window)
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // make sure the viewport matches the new window dimensions; note that width and 
+    // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
