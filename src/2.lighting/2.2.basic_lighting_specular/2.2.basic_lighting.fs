@@ -24,8 +24,8 @@ void main()
     // specular
     float specularStrength = 0.5;
     vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 reflectDir = reflect(-lightDir, norm);  
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+    vec3 reflectDir = reflect(-lightDir, norm);  // reflektjemo suprotni vektor od osvetljenja oko normale, tj. u odnosu na normalu
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32); // spetenovanje je za dobijanje sajnesa
     vec3 specular = specularStrength * spec * lightColor;  
         
     vec3 result = (ambient + diffuse + specular) * objectColor;

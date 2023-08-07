@@ -35,7 +35,7 @@ public:
             fShaderFile.open(fragmentPath);
             std::stringstream vShaderStream, fShaderStream;
             // read file's buffer contents into streams
-            vShaderStream << vShaderFile.rdbuf();
+            vShaderStream << vShaderFile.rdbuf(); //citamo iz fajla i upisujemo u bafer
             fShaderStream << fShaderFile.rdbuf();		
             // close file handlers
             vShaderFile.close();

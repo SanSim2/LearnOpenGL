@@ -60,8 +60,8 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetCursorPosCallback(window, mouse_callback); //call back za pomeranje misa
+    glfwSetScrollCallback(window, scroll_callback); // call back za skrolovanje
 
     // tell GLFW to capture our mouse
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -248,7 +248,8 @@ int main()
         ourShader.setMat4("projection", projection);
 
         // camera/view transformation
-        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp); // drugi arg je gde gledamo i
+        // dodajemo poyiciju da bi se i tacka koju gledamo menjala, tj da uvek bude ispred nas
         ourShader.setMat4("view", view);
 
         // render boxes
@@ -349,6 +350,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 // ----------------------------------------------------------------------
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
+    // zoom postizemo tako sto smanjimo ugao gledanja
     fov -= (float)yoffset;
     if (fov < 1.0f)
         fov = 1.0f;

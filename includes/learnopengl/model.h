@@ -80,6 +80,7 @@ private:
         {
             // the node object only contains indices to index the actual objects in the scene. 
             // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
+            //u node se nalazi niz mesh-eva koji cuva indekse na kojima se mesh-evi nalze u nizu u scene
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
             meshes.push_back(processMesh(mesh, scene));
         }
@@ -162,7 +163,7 @@ private:
         aiColor3D color(0.0f, 0.0f, 0.0f);
         material->Get(AI_MATKEY_COLOR_AMBIENT, color);
 
-
+        // ucitavamo sve texture
         // 1. diffuse maps
         vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
         textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
@@ -192,9 +193,10 @@ private:
             aiString str;
             mat->GetTexture(type, i, &str);
             // check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
-            bool skip = false;
+            bool skip = false; // ako smo vec ucitali texturu necemo je ponovo ucitali
             for(unsigned int j = 0; j < textures_loaded.size(); j++)
             {
+                // std::strcmp(textures_loaded[j].path.C_Str(), str.C_Str()) - na casu ovako ???
                 if(std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
                 {
                     textures.push_back(textures_loaded[j]);

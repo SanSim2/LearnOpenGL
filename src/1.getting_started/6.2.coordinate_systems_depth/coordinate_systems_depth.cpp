@@ -53,14 +53,14 @@ int main()
 
     // configure global opengl state
     // -----------------------------
-    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST); // kazemo da treba da testira i  dubinu
 
     // build and compile our shader zprogram
     // ------------------------------------
     Shader ourShader("6.2.coordinate_systems.vs", "6.2.coordinate_systems.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
-    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------ //kocka
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -191,6 +191,7 @@ int main()
         // ------
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
+        // pored ciscenja boje cistimo i bafer za cuvanje dubine
 
         // bind textures on corresponding texture units
         glActiveTexture(GL_TEXTURE0);

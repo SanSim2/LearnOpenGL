@@ -48,6 +48,7 @@ int main()
     // build and compile our shader program
     // ------------------------------------
     Shader ourShader("3.3.shader.vs", "3.3.shader.fs"); // you can name your shader files however you like
+    // konstruktor cita fajlove u kojima su pisani sejderi i linkuje ih
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
